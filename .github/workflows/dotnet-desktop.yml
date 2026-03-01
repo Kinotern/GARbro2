@@ -1,4 +1,4 @@
-name: Build GARbro
+name: Build GARbro2
 
 on:
   push:
@@ -18,13 +18,14 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Restore NuGet
-      run: nuget restore GARbro.sln
+      run: nuget restore GARbro2.sln
 
     - name: Build
-      run: msbuild GARbro.sln /p:Configuration=Release /p:Platform=x86
+      run: msbuild GARbro2.sln /p:Configuration=Release /p:Platform="Any CPU"
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: GARbro
-        path: GARbro\bin\Release\
+        name: GARbro2
+        path: |
+          GUI\bin\Release\
